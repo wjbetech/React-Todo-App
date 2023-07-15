@@ -1,0 +1,54 @@
+h1 {
+  font-weight: 400;
+}
+
+li {
+  margin-top: 20px;
+  list-style: none;
+  text-align: left;
+}
+
+ul {
+  margin: 2px auto;
+  padding: 20px 30px;
+  background-color: rgba(32, 32, 106, 0.931);
+  width: 100%;
+  font-size: 0.85em;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+}
+
+.todo-container {
+  margin: 200px auto;
+  width: 40%;
+  padding: 25px 0;
+  border-radius: 5px;
+  background-color: rgba(32, 32, 106, 0.455);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#fa-icon {
+  cursor: pointer;
+  font-family: 'FontAwesome', sans-serif;
+  text-align: right;
+  margin: 0 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(32, 32, 106, 0.931);
+  transition: 0.25s ease-in-out;
+}
+
+.icons-div {
+  display: flex;
+  margin-left: 50px;
+  margin-right: -10px;
+}
+
+.completed {
+  background-color: green;
+  transition: 0.25s ease-in-out;
+}
