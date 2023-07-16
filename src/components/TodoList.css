@@ -1,11 +1,7 @@
 h1 {
   font-weight: 400;
-}
-
-li {
-  margin-top: 20px;
-  list-style: none;
-  text-align: left;
+  margin-bottom: 20px;
+  font-size: 46px;
 }
 
 ul {
@@ -13,9 +9,18 @@ ul {
   padding: 20px 30px;
   background-color: rgba(32, 32, 106, 0.931);
   width: 100%;
-  font-size: 0.85em;
-  font-weight: 200;
+  font-size: 1.2em;
+  font-weight: 400;
   letter-spacing: 0.5px;
+  transition: 0.25s ease-in-out;
+  align-items: center;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .todo-container {
@@ -38,8 +43,12 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(32, 32, 106, 0.931);
-  transition: 0.25s ease-in-out;
+}
+
+/* Add the following style for the <i> elements */
+.item li i {
+  float: left;
+  margin-right: 10px;
 }
 
 .icons-div {
@@ -48,7 +57,67 @@ ul {
   margin-right: -10px;
 }
 
-.completed {
+.complete {
   background-color: green;
+  transition: 0.25s ease-in-out;
+}
+
+.new-todo-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 80%; /* Adjust this value as needed */
+}
+
+.add-task-header {
+  letter-spacing: 0.5px;
+  width: 80%;
+  margin: 35px auto auto auto;
+  text-align: left;
+  padding: 10px;
+
+}
+
+.todo-input {
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  background-color: rgb(218, 218, 218, 0.75);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  width: 65%;
+  font-size: 1.1em;
+  color: grey;
+  flex: 65%;
+  margin: 5px;
+}
+
+.todo-input::placeholder {
+  color: rgba(50, 50, 50, 0.8);
+  font-size: 1em;
+  padding-left: 5px;
+}
+
+.todo-button {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid rgb(235, 235, 235);
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: 300;
+  width: 20%;
+  flex: 25%;
+  margin: 5px;
+}
+
+.todo-button:hover {
+  background-color: rgba(32, 32, 106, 1);
+  border: 1px solid inherit;
   transition: 0.25s ease-in-out;
 }
