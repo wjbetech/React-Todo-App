@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Todo from './Todo';
 import NewTodo from './NewTodo';
 import './TodoList.css';
+import { v4 as  uuidv4 } from 'uuid';
 
 export default class TodoList extends Component {
   constructor(props) {
@@ -15,16 +16,11 @@ export default class TodoList extends Component {
     this.change = this.change.bind(this);
   }
 
-  getNextId() {
-    const { todos } = this.state;
-    return todos.length === 0 ? 1 : Math.max(...todos.map(todo => todo.id)) + 1;
-  }
-
   addTask(newTodo) {
-    const { task } = newTodo; // Extract the 'task' property from 'newTodo'
+    const { task } = newTodo;
     const newTask = {
-      id: this.getNextId(),
-      task: task, // Use the extracted 'task' property here
+      id: uuidv4(),
+      task: task,
       complete: false
     };
     this.setState(prevState => ({
@@ -33,9 +29,12 @@ export default class TodoList extends Component {
   }
 
   delete(id) {
-    this.setState({
-      todos: this.state.todos.filter(t => t.id !== id)
-    });
+    this.setState(prevState => ({
+      todos: prevState.todos.filter(t => t.id !== id).map((todo, index) => ({
+        ...todo,
+        id: index + 1
+      }))
+    }));
   }
 
   toggleCompletion(id) {
@@ -62,13 +61,14 @@ export default class TodoList extends Component {
 
  render() {
 
-    const todos = this.state.todos.map(todo => {
+    const todos = this.state.todos.map((todo, index) => {
     return (
       <div key={todo.id}>
         <Todo
           key={todo.id}
           id={todo.id}
           task={todo.task}
+          index={index}
           complete={todo.complete}
           deleteTodo={this.delete}
           toggleCompletion={() => this.toggleCompletion(todo.id)}

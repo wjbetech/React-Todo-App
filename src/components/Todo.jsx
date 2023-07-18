@@ -53,18 +53,22 @@ export default class Todo extends Component {
 
 render() {
 
-  let task;
+  // destructure state and props
+  const { isEditing, task } = this.state;
+  const { id, complete, index } = this.props;
 
-  if (this.state.isEditing) {
-    task = (
+  let taskContent;
+
+  if (isEditing) {
+    taskContent = (
       <div>
         <form onSubmit={this.handleUpdate} onChange={this.handleChange}>
           <ul className="todo-items">
             <li className="item">
               <textarea
                 name="task"
-                value={this.state.task}
-                onChange={this.state.handleChange}
+                value={task}
+                onChange={this.handleChange}
                 cols="30"
                 rows="1"
                 placeholder="Write the task..">
@@ -76,11 +80,11 @@ render() {
       </div>
     )
   } else {
-    task = (
+    taskContent = (
       <div>
-        <ul className={`todo-items ${this.props.complete ? 'complete' : ''}`}>
+        <ul className={`todo-items ${complete ? 'complete' : ''}`}>
           <li className="item">
-            {this.props.id}. {this.props.task}
+            {index + 1}. {task}
             <div className="icons-div">
               <i id="fa-icon" className="fa-regular fa-pen-to-square" onClick={this.handleEditing}></i>
               {this.props.complete ? (
@@ -88,12 +92,12 @@ render() {
               ) : (
                 <i onClick={this.props.toggleCompletion} id="fa-icon" className="fa-solid fa-check"></i>
               )}
-              <i onClick={() => this.props.deleteTodo(this.props.id)} id="fa-icon" className="fa-regular fa-trash-can"></i>
+              <i onClick={() => this.props.deleteTodo(id)} id="fa-icon" className="fa-regular fa-trash-can"></i>
             </div>
           </li>
         </ul>
       </div>
     )
   }
-  return task;
+  return taskContent;
 }};
